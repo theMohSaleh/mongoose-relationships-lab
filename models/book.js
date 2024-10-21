@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
+const bookDetailsSchema = mongoose.Schema({
+    genre: String,
+    description: String,
+    wordCount: Number,
+})
+
 const bookSchema = mongoose.Schema({
     title: String,
-    wordCount: Number,
     published: Date,
+    details: [bookDetailsSchema],
     writer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Author',
